@@ -2,7 +2,7 @@
 const nextConfig = {
   env: {
     NEXT_PUBLIC_BASE_URL: process.env.NODE_ENV === 'production' 
-      ? 'https://explorer.aegisum.com' 
+      ? 'https://explorer2.adventurecoin.quest' 
       : 'http://localhost:3000'
   },
   eslint: {

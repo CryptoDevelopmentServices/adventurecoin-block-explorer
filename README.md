@@ -1,8 +1,8 @@
-# Aegisum Explorer
+# AdventureCoin Explorer
 
-A full-featured, modern blockchain explorer for the Aegisum cryptocurrency.
+A full-featured, modern blockchain explorer for the AdventureCoin cryptocurrency.
 
-[Aegisum Explorer](https://explorer.aegisum.com)
+[AdventureCoin Explorer](https://explorer2.adventurecoin.quest)
 
 ---
 
@@ -24,7 +24,7 @@ A full-featured, modern blockchain explorer for the Aegisum cryptocurrency.
 - **Ubuntu 20.04+**  
 - **Node.js 18+ (LTS)**  
 - **MongoDB 7.0+**  
-- **Aegisum Daemon (`aegisumd`) running with RPC enabled**  
+- **AdventureCoin Daemon (`adventurecoind`) running with RPC enabled**  
 
 ---
 
@@ -40,7 +40,7 @@ source ~/.profile
 nvm install --lts
 ```
 
-### 2. Install MongoDB 7.0
+<!-- ### 2. Install MongoDB 7.0
 
 - Install one line at a time
 ```bash
@@ -57,22 +57,22 @@ sudo apt-get update
 ```
 ```bash
 sudo apt-get install -y mongodb-org
+``` -->
+
+### 2. Clone the Repository
+```bash
+git clone https://github.com/CryptoDevelopmentServices/adventurecoin-block-explorer.git
 ```
 
-### 3. Clone the Repository
+### 3. Install Project Dependencies
 ```bash
-git clone https://github.com/clyntor/aegisum-block-explorer.git
-```
-
-### 4. Install Project Dependencies
-```bash
-cd aegisum-block-explorer
+cd adventurecoin-block-explorer
 ```
 ```bash
 npm install --legacy-peer-deps
 ```
 
-### 5. Configure Environment Variables
+### 4. Configure Environment Variables
 ```bash
 nano .env
 ```
@@ -83,9 +83,9 @@ nano .env
   MONGODB_URI=mongodb://localhost:27017/explorerdb
   MONGODB_DB=explorerdb
 
-  # Aegisum RPC Configuration
+  # AdventureCoin RPC Configuration
   RPC_HOST=localhost
-  RPC_PORT=39940
+  RPC_PORT=9982
   RPC_USER=your_rpc_username
   RPC_PASS=your_rpc_password
 
@@ -93,24 +93,24 @@ nano .env
   SYNC_INTERVAL=60000
   ```
 
-### 6. Sync Blockchain Data
+### 5. Sync Blockchain Data
 ```bash
 npm install -g pm2
 ```
 ```bash
-pm2 start scripts/sync-blockchain.js --name aegisum-sync
+pm2 start scripts/sync-blockchain.js --name adventurecoin-sync
 ```
 - Check logs / monitor initial sync:
 ```bash
-pm2 logs aegisum-sync
+pm2 logs adventurecoin-sync
 ```
 
-### 7. Build and Run the Explorer
+### 6. Build and Run the Explorer
 ```bash
 npm run build
 ```
 ```bash
-pm2 start npm --name aegisum-explorer -- start
+pm2 start npm --name adventurecoin-explorer -- start
 ```
 ```bash
 pm2 startup
@@ -136,7 +136,7 @@ sudo apt install nginx
 
 ### 2. Configure Nginx
 ```bash
-sudo nano /etc/nginx/sites-available/aegisum-explorer
+sudo nano /etc/nginx/sites-available/adventurecoin-explorer
 ```
 - Paste this config:
 ```bash
@@ -157,7 +157,7 @@ server {
 
 - Enable the site:
 ```bash
-sudo ln -s /etc/nginx/sites-available/aegisum-explorer /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/adventurecoin-explorer /etc/nginx/sites-enabled/
 ```
 
 - Test config
@@ -187,7 +187,7 @@ sudo certbot --nginx -d explorer.yourdomain.com
 
 ## 🔄 Updating the Explorer
 ```bash
-cd aegisum-block-explorer
+cd adventurecoin-block-explorer
 git pull
 npm install --legacy-peer-deps
 npm run build
@@ -196,8 +196,8 @@ pm2 restart all
 
 ## 📄 License
 
-This project is under the MIT License. See the [LICENSE](https://github.com/clyntor/aegisum-block-explorer/blob/main/LICENSE) file for details.
+This project is under the MIT License. See the [LICENSE](https://github.com/CryptoDevelopmentServices/adventurecoin-block-explorer/blob/main/LICENSE) file for details.
 
 ## Support
 
-For support inquiries open an issue on GitHub or contact the Aegisum team through [mail](mailto:clynt@aegisum.com) or [discord](discord.gg/4E5caDKkeP).
+For support inquiries open an issue on GitHub or contact the adventurecoin team through [mail](mailto:cryptodevelopmentservicescds@gmail.com) or [discord](https://discord.gg/6dzggBf7fY).

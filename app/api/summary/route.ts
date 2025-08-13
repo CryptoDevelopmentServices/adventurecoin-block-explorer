@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { getNetworkStats, rpcCall } from "@/lib/data"
-import { getAegsPrice } from "@/lib/price"
+import { getADVCPrice } from "@/lib/price"
 import { rateLimit } from "@/lib/rate-limit"
 
 export async function GET(request: NextRequest) {
@@ -21,10 +21,10 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const [networkStats, price] = await Promise.all([getNetworkStats(), getAegsPrice()])
+    const [networkStats, price] = await Promise.all([getNetworkStats(), getADVCPrice()])
 
     const priceNumber = Number.parseFloat(price)
-    const maxSupply = 100000000 // 100 million AEGS
+    const maxSupply = 180000000 // 180 million ADVC
     const marketCap = networkStats.supply * priceNumber
     const networkHashRate = await rpcCall("getnetworkhashps", [120, -1])
     
@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
         },
         networkHashRate: {
           value: networkHashRate,
-          formatted: `${Number(networkHashRate / 1000000000).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 4 })} GH/s`
+          formatted: `${Number(networkHashRate / 1000).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 4 })} KH/s`
         },
         peers: {
           value: networkStats.connections,
@@ -67,8 +67,8 @@ export async function GET(request: NextRequest) {
           formatted: `${((networkStats.supply / maxSupply) * 100).toFixed(2)}%`,
         },
         timestamp: new Date().toISOString(),
-        network: "Aegisum",
-        symbol: "AEGS",
+        network: "AdventureCoin",
+        symbol: "ADVC",
       },
       {
         headers: {
@@ -86,14 +86,14 @@ export async function GET(request: NextRequest) {
         currentSupply: { value: 0, formatted: "0" },
         difficulty: { value: 0.0000, formatted: "0.0000" },
         marketCap: { value: 0, formatted: "$0.00" },
-        maxSupply: { value: 100000000, formatted: "100,000,000" },
-        networkHashRate: { value: 0.0000, formatted: "0.0000 GH/s" },
+        maxSupply: { value: 180000000, formatted: "180,000,000" },
+        networkHashRate: { value: 0.0000, formatted: "0.0000 KH/s" },
         peers: { value: 0, formatted: "0" },
         price: { value: 0, formatted: "$0.00000000" },
         supplyPercentage: { value: 0, formatted: "0.00%" },
         timestamp: new Date().toISOString(),
-        network: "Aegisum",
-        symbol: "AEGS",
+        network: "AdventureCoin",
+        symbol: "ADVC",
       },
       { status: 500 },
     )

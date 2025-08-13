@@ -4,7 +4,7 @@ export const revalidate = 60 // Revalidate every 60 seconds (1 minute)
 import Link from "next/link"
 import { formatNumber, formatHash, timeAgo } from "@/lib/utils"
 import { getLatestBlocks, getNetworkStats, getRecentTransactions } from "@/lib/data"
-import { getAegsPrice } from "@/lib/price"
+import { getADVCPrice } from "@/lib/price"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { BarChart2, Zap, DollarSign, TrendingUp } from "lucide-react"
@@ -17,7 +17,7 @@ export default async function Home() {
     getLatestBlocks(5),
     getNetworkStats(),
     getRecentTransactions(5),
-    getAegsPrice(),
+    getADVCPrice(),
   ])
 
   // Format price for display
@@ -36,15 +36,15 @@ export default async function Home() {
       <AutoRefresh interval={60} />
 
       <div className="flex flex-col items-center justify-center mb-8">
-        <h1 className="text-3xl font-bold mb-2 text-slate-100">Aegisum Blockchain Explorer</h1>
-        <p className="text-slate-400 mb-6">Explore the AEGS blockchain</p>
+        <h1 className="text-3xl font-bold mb-2 text-slate-100">AdventureCoin Blockchain Explorer</h1>
+        <p className="text-slate-400 mb-6">Explore the ADVC blockchain</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <StatCard
           title="Price (USDT)"
           value={formattedPrice}
-          description="TradeOgre AEGS/USDT"
+          description="ADVC/USDT"
           icon={<DollarSign className="h-5 w-5" />}
           variant="price"
         />
@@ -57,14 +57,14 @@ export default async function Home() {
         />
         <StatCard
           title="Circulating Supply"
-          value={`${formatNumber(networkStats.supply)} AEGS`}
+          value={`${formatNumber(networkStats.supply)} ADVC`}
           description="Current supply"
           icon={<BarChart2 className="h-5 w-5" />}
           variant="supply"
         />
         <StatCard
           title="Network Hashrate"
-          value={`${networkStats.nethash.toFixed(4)} GH/s`}
+          value={`${networkStats.nethash.toFixed(4)} MH/s`}
           description="Current hashrate"
           icon={<Zap className="h-5 w-5" />}
           variant="hashrate"
@@ -81,7 +81,7 @@ export default async function Home() {
               </Link>
             </CardTitle>
             <CardDescription className="text-slate-400">
-              Most recent blocks mined on the Aegisum network
+              Most recent blocks mined on the AdventureCoin network
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -161,7 +161,7 @@ export default async function Home() {
                 View all
               </Link>
             </CardTitle>
-            <CardDescription className="text-slate-400">Latest transactions on the Aegisum blockchain</CardDescription>
+            <CardDescription className="text-slate-400">Latest transactions on the AdventureCoin blockchain</CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
@@ -243,24 +243,24 @@ function StatCard({ title, value, description, icon, variant }) {
   // More subtle, professional colors
   const variants = {
     price: {
-      bg: "bg-slate-800/60",
+      bg: "bg-slate-800/60", // keep dark base for contrast
       border: "border-slate-600/50",
-      iconBg: "bg-emerald-500/20",
-      iconColor: "text-emerald-400",
+      iconBg: "bg-green-600/20",
+      iconColor: "text-green-400",
       gradient: "bg-gradient-to-br from-slate-800/80 to-slate-700/60",
     },
     market: {
       bg: "bg-slate-800/60",
       border: "border-slate-600/50",
-      iconBg: "bg-blue-500/20",
-      iconColor: "text-blue-400",
+      iconBg: "bg-purple-600/20",
+      iconColor: "text-purple-400",
       gradient: "bg-gradient-to-br from-slate-800/80 to-slate-700/60",
     },
     supply: {
       bg: "bg-slate-800/60",
       border: "border-slate-600/50",
-      iconBg: "bg-amber-500/20",
-      iconColor: "text-amber-400",
+      iconBg: "bg-slate-400/30",  // silver-ish subtle gray
+      iconColor: "text-slate-300",
       gradient: "bg-gradient-to-br from-slate-800/80 to-slate-700/60",
     },
     hashrate: {
@@ -271,6 +271,7 @@ function StatCard({ title, value, description, icon, variant }) {
       gradient: "bg-gradient-to-br from-slate-800/80 to-slate-700/60",
     },
   }
+
 
   const style = variants[variant] || variants.price
 

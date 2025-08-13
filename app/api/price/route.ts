@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { getAegsPrice } from "@/lib/price"
+import { getADVCPrice } from "@/lib/price"
 import { rateLimit } from "@/lib/rate-limit"
 
 export async function GET(request: NextRequest) {
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    const price = await getAegsPrice()
+    const price = await getADVCPrice()
 
     return new NextResponse(price, {
       status: 200,

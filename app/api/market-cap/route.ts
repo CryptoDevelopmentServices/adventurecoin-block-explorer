@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { getNetworkStats } from "@/lib/data"
-import { getAegsPrice } from "@/lib/price"
+import { getADVCPrice } from "@/lib/price"
 import { rateLimit } from "@/lib/rate-limit"
 
 export async function GET(request: NextRequest) {
@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    const [networkStats, price] = await Promise.all([getNetworkStats(), getAegsPrice()])
+    const [networkStats, price] = await Promise.all([getNetworkStats(), getADVCPrice()])
 
     const priceNumber = Number.parseFloat(price)
     const marketCap = networkStats.supply * priceNumber

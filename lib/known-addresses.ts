@@ -1,7 +1,7 @@
 /**
  * Known Addresses
  *
- * This file contains a mapping of known Aegisum addresses to their labels/tags.
+ * This file contains a mapping of known AdventureCoin addresses to their labels/tags.
  * Add new addresses here to have them automatically recognized throughout the explorer.
  */
 
@@ -16,60 +16,105 @@ export interface KnownAddress {
 // List of known addresses
 export const knownAddresses: KnownAddress[] = [
   {
-    address: "aegs1qn48wlu7zuk8dd3vpvj6tj3gsjnmsnaxcv302hu",
-    tag: "Dev Fund",
-    description: "Aegisum Development Fund",
+    address: "AeD4pPi3D5kB9aMEgH3eRHoD6XMKbrpRAW",
+    tag: "Dev Fund (Master Wallet)",
+    description: "AdventureCoin Development Fund (Master Wallet)",
     type: "dev",
   },
   {
-    address: "aegs1qvvpxjd25vecp69avrr3zt0jf5hukaw97a6xpqq",
-    tag: "Hash Hut",
-    description: "Mining Pool",
-    url: "https://hash-hut.net",
-    type: "pool",
-  },
-  {
-    address: "aegs1qhf6a48yhj3alnzrpchcdvf89gerwqkq0re7wwv",
-    tag: "Clynt",
-    description: "Project Lead",
-    url: "https://clyntor.dev",
+    address: "AKUg58E171GVJNw2RQzooQnuHs1zns2ecD",
+    tag: "Development Wallet",
+    description: "Team wallet",
     type: "team",
   },
   {
-    address: "AtvEmmEnmsbTphC6ASaVJyCSu416XzpLmY",
-    tag: "Official Pool",
+    address: "AJzNjXgPYUGe9cmWz2ND7hrEYA1AiwpggX",
+    tag: "Community Wallet",
+    description: "Team wallet",
+    type: "team",
+  },
+  {
+    address: "Ac2DHE6freiBENuzZ3VTfY8zwwKc2oX2Fw",
+    tag: "Charity Wallet",
+    description: "Team wallet",
+    type: "team",
+  },
+  {
+    address: "AMmKZs3GTWQnGdk3WjR9Q35cizHDVtHjie",
+    tag: "Staff Payment Wallet",
+    description: "Team wallet",
+    type: "team",
+  },
+  {
+    address: "AREstbeSFzzbMGToUF6E2i3DbPa5nJB4Lz",
+    tag: "NovaGrid",
     description: "Mining Pool",
-    url: "https://pool.aegisum.com",
+    url: "https://novagrid.online/",
     type: "pool",
   },
   {
-    address: "aegs1q5wwgnxfxq9d4reeenhw2j4qg3sw8a9kkq0squ9",
-    tag: "Zerg Pool",
-    description: "Mining Pool",
-    url: "https://zergpool.com",
-    type: "pool",
-  },
-  {
-    address: "Ay8EwfQ73qgbiPeyEgKBFuUNT5sr6UncsA",
-    tag: "Z Pool",
-    description: "Mining Pool",
-    url: "https://zpool.ca/",
-    type: "pool",
-  },
-  {
-    address: "AmYbRzCa4LkcT1d5kbqWUT3ioFkZNDjSzV",
+    address: "Ae5vqtfRFKWYVfgCzyR4iat8FuKfLH4jve",
     tag: "Coin Miners",
     description: "Mining Pool",
     url: "https://pool.coin-miners.info/",
     type: "pool",
   },
   {
-    address: "AoKZeWjnUVjxrx1N8EnTKsX2i2viQ8pP6o",
-    tag: "Hulk Hash",
+    address: "AXRdunEc71n9oKLyLabAzV9eATRgkmGzMd",
+    tag: "RPlant",
     description: "Mining Pool",
-    url: "https://hulkhash.uk/",
+    url: "https://pool.rplant.xyz",
     type: "pool",
   },  
+  {
+    address: "AKeNU8umLeCy4ZDJP5fkqM69VQEg4ydhka",
+    tag: "Eve Pool",
+    description: "Mining Pool",
+    url: "https://mine.evepool.pw",
+    type: "pool",
+  },
+  {
+    address: "AVayH8jK94vSHoden4UFjwnWqPGSEQvYpf",
+    tag: "Zerg Pool",
+    description: "Mining Pool",
+    url: "https://zergpool.com",
+    type: "pool",
+  },
+  {
+    address: "AQz6FkTNb3V5eMR42ui1YMge7vWMbgPNQq",
+    tag: "NestEx",
+    description: "Exchange",
+    url: "https://trade.nestex.one",
+    type: "exchange",
+  },
+  {
+    address: "AWxxu9EGYB6yjzaFuYBrW5UQ7LBTfdhbXf",
+    tag: "NestEx",
+    description: "Exchange",
+    url: "https://trade.nestex.one",
+    type: "exchange",
+  }, 
+  {
+    address: "AbsPyiG15Xn9ppKmCMNDmTBw41mJA963gC",
+    tag: "NestEx",
+    description: "Exchange",
+    url: "https://trade.nestex.one",
+    type: "exchange",
+  }, 
+  {
+    address: "AGiTbrSMmEMdqqp28T2V1iwFkmjUzDSguP",
+    tag: "NestEx",
+    description: "Exchange",
+    url: "https://trade.nestex.one",
+    type: "exchange",
+  }, 
+  {
+    address: "ASjX2TfboXYayMFc21K1DGvMsW9GT1kJKe",
+    tag: "NestEx",
+    description: "Exchange",
+    url: "https://trade.nestex.one",
+    type: "exchange",
+  },    
 ]
 
 // Map for quick lookups

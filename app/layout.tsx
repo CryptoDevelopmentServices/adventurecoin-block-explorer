@@ -7,8 +7,8 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Aegisum Blockchain Explorer",
-  description: "Explore the Aegisum (AEGS) blockchain - blocks, transactions, addresses, and network statistics",
+  title: "AdventureCoin Blockchain Explorer",
+  description: "Explore the AdventureCoin (ADVC) blockchain - blocks, transactions, addresses, and network statistics",
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",

@@ -21,7 +21,7 @@ export function MempoolVisualization({ transactions, stats }: MempoolVisualizati
 
     // First, try to get the total from the processed transaction data
     if (tx.total && tx.total > 0) {
-      // If total is in satoshis (very large number), convert to AEGS
+      // If total is in satoshis (very large number), convert to ADVC
       return tx.total > 100000000 ? tx.total / 100000000 : tx.total
     }
 
@@ -50,7 +50,7 @@ export function MempoolVisualization({ transactions, stats }: MempoolVisualizati
       }, 0)
 
       if (total > 0) {
-        // If the total seems to be in satoshis (very large number), convert to AEGS
+        // If the total seems to be in satoshis (very large number), convert to ADVC
         return total > 100000000 ? total / 100000000 : total
       }
     }
@@ -101,7 +101,7 @@ export function MempoolVisualization({ transactions, stats }: MempoolVisualizati
     return 1
   }
 
-  // Helper function to format value for display (compact version with AEGS)
+  // Helper function to format value for display (compact version with ADVC)
   const formatValue = (value: number | null) => {
     if (value === null || value === 0) return "0"
     if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`
@@ -143,21 +143,21 @@ export function MempoolVisualization({ transactions, stats }: MempoolVisualizati
               title={`Transaction: ${tx.txid || "Unknown"}${
                 txValue
                   ? `
-Value: ${txValue} AEGS`
+Value: ${txValue} ADVC`
                   : ""
               }
 Time in pool: ${Math.floor(age / 60)} minutes${
                 tx.fee
                   ? `
-Fee: ${tx.fee} AEGS`
+Fee: ${tx.fee} ADVC`
                   : ""
               }`}
               onClick={() => tx.txid && (window.location.href = `/tx/${tx.txid}`)}
             >
-              {/* Mobile: Show value and AEGS on separate lines */}
+              {/* Mobile: Show value and ADVC on separate lines */}
               <div className="text-white text-center sm:hidden">
                 <div className="text-xs font-bold leading-tight">{valueText}</div>
-                <div className="text-[10px] opacity-90 leading-tight">AEGS</div>
+                <div className="text-[10px] opacity-90 leading-tight">ADVC</div>
               </div>
 
               {/* Desktop: Show value inline */}
@@ -204,7 +204,7 @@ Fee: ${tx.fee} AEGS`
             <>
               {generateTransactionBlocks()}
               <p className="text-sm text-muted-foreground mt-4">
-                Each block represents a transaction with its AEGS value. Hover to see details, click to view
+                Each block represents a transaction with its ADVC value. Hover to see details, click to view
                 transaction.
               </p>
             </>

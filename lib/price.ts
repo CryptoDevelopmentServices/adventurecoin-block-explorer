@@ -8,7 +8,7 @@ type PriceCache = {
 
 let priceCache: PriceCache | null = null
 
-export async function getAegsPrice(): Promise<string> {
+export async function getADVCPrice(): Promise<string> {
   // Check if cache is valid
   if (priceCache && Date.now() - priceCache.timestamp < CACHE_DURATION) {
     return priceCache.price
@@ -16,11 +16,11 @@ export async function getAegsPrice(): Promise<string> {
 
   try {
     // Cache is expired or doesn't exist, fetch new data
-    const response = await fetch("https://tradeogre.com/api/v1/ticker/AEGS-USDT", {
+    const response = await fetch("https://api.coinpaprika.com/v1/tickers/advc-adventurecoin", {
       next: { revalidate: CACHE_DURATION / 1000 }, // Use Next.js cache
       headers: {
         Accept: "application/json",
-        "User-Agent": "Aegisum-Explorer/1.0",
+        "User-Agent": "AdventureCoin-Explorer/1.0",
       },
     })
 
@@ -30,18 +30,19 @@ export async function getAegsPrice(): Promise<string> {
 
     const data = await response.json()
 
-    if (data.success && data.price) {
+    if (data && data.quotes && data.quotes.USD && typeof data.quotes.USD.price === "number") {
       // Update cache
+      const priceStr = data.quotes.USD.price.toFixed(6)
       priceCache = {
-        price: data.price,
+        price: priceStr,
         timestamp: Date.now(),
       }
-      return data.price
+      return priceStr
     } else {
       throw new Error("Invalid API response format")
     }
   } catch (error) {
-    console.error("Error fetching AEGS price:", error)
+    console.error("Error fetching ADVC price:", error)
 
     // If fetch fails, try to use old cached data even if expired
     if (priceCache) {
@@ -53,9 +54,9 @@ export async function getAegsPrice(): Promise<string> {
   }
 }
 
-// Helper function to calculate USD value from AEGS amount
-export function calculateUsdValue(aegsAmount: number, aegsPrice: string): string {
-  const price = Number.parseFloat(aegsPrice)
-  const usdValue = aegsAmount * price
+// Helper function to calculate USD value from ADVC amount
+export function calculateUsdValue(advcAmount: number, advcPrice: string): string {
+  const price = Number.parseFloat(advcPrice)
+  const usdValue = advcAmount * price
   return usdValue.toFixed(2) // Round to 2 decimal places (pennies)
 }

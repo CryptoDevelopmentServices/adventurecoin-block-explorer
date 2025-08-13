@@ -11,9 +11,9 @@ export default function APIPage() {
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Code className="h-8 w-8 text-blue-500" />
-            <h1 className="text-4xl font-bold">Aegisum API</h1>
+            <h1 className="text-4xl font-bold">AdventureCoin API</h1>
           </div>
-          <p className="text-xl text-muted-foreground">Simple API endpoints for Aegisum blockchain data</p>
+          <p className="text-xl text-muted-foreground">Simple API endpoints for AdventureCoin blockchain data</p>
         </div>
 
         {/* Important Notice */}
@@ -41,13 +41,13 @@ export default function APIPage() {
             <Card>
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Current Supply</CardTitle>
-                <CardDescription>Get the current circulating supply of AEGS</CardDescription>
+                <CardDescription>Get the current circulating supply of ADVC</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-2">
                   <Badge variant="outline">Plain Text</Badge>
                   <a
-                    href="https://explorer.aegisum.com/api/supply"
+                    href="https://explorer2.adventurecoin.quest/api/supply"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline font-mono text-sm flex items-center gap-1"
@@ -67,13 +67,13 @@ export default function APIPage() {
             <Card>
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Maximum Supply</CardTitle>
-                <CardDescription>Get the maximum possible supply of AEGS (100M)</CardDescription>
+                <CardDescription>Get the maximum possible supply of ADVC (180M)</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-2">
                   <Badge variant="outline">Plain Text</Badge>
                   <a
-                    href="https://explorer.aegisum.com/api/max-supply"
+                    href="https://explorer2.adventurecoin.quest/api/max-supply"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline font-mono text-sm flex items-center gap-1"
@@ -84,7 +84,7 @@ export default function APIPage() {
                 </div>
                 <div>
                   <p className="text-sm font-medium mb-1">Example Output:</p>
-                  <code className="block bg-slate-100 dark:bg-slate-800 p-2 rounded text-sm">100000000</code>
+                  <code className="block bg-slate-100 dark:bg-slate-800 p-2 rounded text-sm">180000000</code>
                 </div>
               </CardContent>
             </Card>
@@ -93,13 +93,13 @@ export default function APIPage() {
             <Card>
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Current Price</CardTitle>
-                <CardDescription>Get the current AEGS price in USD</CardDescription>
+                <CardDescription>Get the current ADVC price in USD</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-2">
                   <Badge variant="outline">Plain Text</Badge>
                   <a
-                    href="https://explorer.aegisum.com/api/price"
+                    href="https://explorer2.adventurecoin.quest/api/price"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline font-mono text-sm flex items-center gap-1"
@@ -125,7 +125,7 @@ export default function APIPage() {
                 <div className="flex items-center gap-2">
                   <Badge variant="outline">Plain Text</Badge>
                   <a
-                    href="https://explorer.aegisum.com/api/market-cap"
+                    href="https://explorer2.adventurecoin.quest/api/market-cap"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline font-mono text-sm flex items-center gap-1"
@@ -151,7 +151,7 @@ export default function APIPage() {
                 <div className="flex items-center gap-2">
                   <Badge variant="outline">Plain Text</Badge>
                   <a
-                    href="https://explorer.aegisum.com/api/block-height"
+                    href="https://explorer2.adventurecoin.quest/api/block-height"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline font-mono text-sm flex items-center gap-1"
@@ -177,7 +177,7 @@ export default function APIPage() {
                 <div className="flex items-center gap-2">
                   <Badge variant="outline">Plain Text</Badge>
                   <a
-                    href="https://explorer.aegisum.com/api/difficulty"
+                    href="https://explorer2.adventurecoin.quest/api/difficulty"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline font-mono text-sm flex items-center gap-1"
@@ -203,7 +203,7 @@ export default function APIPage() {
                 <div className="flex items-center gap-2">
                   <Badge variant="outline">Plain Text</Badge>
                   <a
-                    href="https://explorer.aegisum.com/api/network-hashrate"
+                    href="https://explorer2.adventurecoin.quest/api/network-hashrate"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline font-mono text-sm flex items-center gap-1"
@@ -229,7 +229,7 @@ export default function APIPage() {
                 <div className="flex items-center gap-2">
                   <Badge variant="outline">Plain Text</Badge>
                   <a
-                    href="https://explorer.aegisum.com/api/peers"
+                    href="https://explorer2.adventurecoin.quest/api/peers"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline font-mono text-sm flex items-center gap-1"
@@ -260,7 +260,7 @@ export default function APIPage() {
               <div className="flex items-center gap-2">
                 <Badge variant="secondary">JSON</Badge>
                 <a
-                  href="https://explorer.aegisum.com/api/summary"
+                  href="https://explorer2.adventurecoin.quest/api/summary"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline font-mono text-sm flex items-center gap-1"
@@ -277,14 +277,14 @@ export default function APIPage() {
   "currentSupply": { "value": 19804000, "formatted": "19,804,000" },
   "difficulty": { "value": 20574.6753725802, "formatted": "20,574.6753" },
   "marketCap": { "value": 15249.08, "formatted": "$15,249.08" },
-  "maxSupply": { "value": 100000000, "formatted": "100,000,000" },
+  "maxSupply": { "value": 180000000, "formatted": "180,000,000" },
   "price": { "value": 0.00077000, "formatted": "$0.00077" },
-  "networkHashRate": { "value": 473377087815.4365, "formatted": "473.3771 GH/s" },
+  "networkHashRate": { "value": 473377087815.4365, "formatted": "473.3771 KH/s" },
   "peers": { "value": 22, "formatted": "22" },
   "supplyPercentage": { "value": 19.804, "formatted": "19.80%" },
   "timestamp": "2025-06-29T18:28:36.792Z",
-  "network": "Aegisum",
-  "symbol": "AEGS"
+  "network": "AdventureCoin",
+  "symbol": "ADVC"
 }`}
                 </pre>
               </div>
@@ -302,13 +302,13 @@ export default function APIPage() {
             <div>
               <p className="text-sm font-medium mb-2">Get current price:</p>
               <code className="block bg-slate-100 dark:bg-slate-800 p-3 rounded text-sm break-all">
-                curl https://explorer.aegisum.com/api/price
+                curl https://explorer2.adventurecoin.quest/api/price
               </code>
             </div>
             <div>
               <p className="text-sm font-medium mb-2">Get all data as JSON:</p>
               <code className="block bg-slate-100 dark:bg-slate-800 p-3 rounded text-sm break-all">
-                curl https://explorer.aegisum.com/api/summary
+                curl https://explorer2.adventurecoin.quest/api/summary
               </code>
             </div>
           </CardContent>

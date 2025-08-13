@@ -88,9 +88,9 @@ export function MainNav() {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
-              <Image src="/logo.png" alt="Aegisum Logo" width={32} height={32} />
+              <Image src="/logo.png" alt="AdventureCoin Logo" width={32} height={32} />
               <div className="flex items-center space-x-1">
-                <span className="font-bold text-xl text-white">AEGS</span>
+                <span className="font-bold text-xl text-white">ADVC</span>
                 <span className="text-blue-400 font-medium">Explorer</span>
               </div>
             </Link>
@@ -98,7 +98,7 @@ export function MainNav() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
               <Link
-                href="https://aegisum.com"
+                href="https://adventurecoin.quest"
                 className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
                 target="_blank"
               >
@@ -156,7 +156,7 @@ export function MainNav() {
                 {openDropdown === "explorers" && (
                   <div className="absolute top-full left-0 mt-2 w-48 bg-[#1a2238] border border-slate-600/50 rounded-lg shadow-xl py-2">
                     <a
-                      href="https://explorer1.aegisum.com"
+                      href="https://explorer.adventurecoin.quest"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
@@ -164,12 +164,12 @@ export function MainNav() {
                       Secondary Explorer
                     </a>
                     <a
-                      href="https://aegisumexplorer.com"
+                      href="https://advcview.ribbitx.com"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
                     >
-                      Community Explorer
+                      Ribbitx Explorer
                     </a>
                   </div>
                 )}
@@ -187,29 +187,29 @@ export function MainNav() {
                 {openDropdown === "faucets" && (
                   <div className="absolute top-full left-0 mt-2 w-48 bg-[#1a2238] border border-slate-600/50 rounded-lg shadow-xl py-2">
                     <a
-                      href="https://aegisum.org/faucet"
+                      href="https://advc.ribbitx.com/faucet"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
                     >
-                      Main Faucet
+                      Ribbitx Faucet
                     </a>
                     <a
-                      href="https://faucet.aegisum.com"
+                      href="https://trade.nestex.one/asset/ADVC"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
                     >
-                      Secondary Faucet
+                      Nestex Faucet
                     </a>
-                    <a
+                    {/* <a
                       href="https://aegisumexplorer.com/faucet"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
                     >
                       Community Faucet
-                    </a>
+                    </a> */}
                   </div>
                 )}
               </div>
@@ -226,7 +226,7 @@ export function MainNav() {
                 {openDropdown === "exchanges" && (
                   <div className="absolute top-full left-0 mt-2 w-48 bg-[#1a2238] border border-slate-600/50 rounded-lg shadow-xl py-2">
                     <a
-                      href="https://nestex.one/spot/aegs"
+                      href="https://nestex.one/spot/advc"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
@@ -234,15 +234,15 @@ export function MainNav() {
                       NestEx
                     </a>
                     <a
-                      href="https://tradeogre.com/exchange/AEGS-USDT"
+                      href="https://app.exbitron.com/exchange/?market=ADVC-USDT"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
                     >
-                      TradeOgre
+                      ExBitron
                     </a>
                     <a
-                      href="https://rabid-rabbit.org/account/trade/AEGS-USDT"
+                      href="https://rabid-rabbit.org/account/trade/ADVC-USDT"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
@@ -253,14 +253,14 @@ export function MainNav() {
                 )}
               </div>
 
-              <a
+              {/* <a
                 href="https://pool.aegisum.com"
                 target="_blank"
                 rel="noreferrer"
                 className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
               >
                 Mining Pool
-              </a>
+              </a> */}
 
               {/* Wallets Dropdown */}
               <div className="relative" ref={(el) => (dropdownRefs.current.wallets = el)}>
@@ -274,7 +274,7 @@ export function MainNav() {
                 {openDropdown === "wallets" && (
                   <div className="absolute top-full left-0 mt-2 w-48 bg-[#1a2238] border border-slate-600/50 rounded-lg shadow-xl py-2">
                     <a
-                      href="https://github.com/Aegisum/aegisum-core/releases"
+                      href="https://github.com/AdventureCoin-ADVC/AdventureCoin/releases"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
@@ -282,7 +282,7 @@ export function MainNav() {
                       Core Wallet
                     </a>
                     <a
-                      href="https://wallet.aegisum.com"
+                      href="https://explorer.adventurecoin.quest/wallet/#"
                       target="_blank"
                       rel="noreferrer"
                       className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-slate-700/50 transition-colors"
@@ -293,13 +293,13 @@ export function MainNav() {
                 )}
               </div>
 
-              <Link
+              {/* <Link
                 href="https://aegisum.com/news"
                 className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
                 target="_blank"
               >
                 News
-              </Link>
+              </Link> */}
             </nav>
 
             {/* Right side - Search only */}
@@ -342,7 +342,7 @@ export function MainNav() {
                   {/* Main Links */}
                   <div className="space-y-4">
                     <Link
-                      href="https://aegisum.com"
+                      href="https://adventurecoin.quest"
                       target="_blank"
                       className="flex items-center space-x-3 text-gray-300 hover:text-white text-lg font-medium"
                       onClick={toggleMobileMenu}
@@ -393,7 +393,7 @@ export function MainNav() {
                       <span>External Links</span>
                     </h3>
                     <div className="space-y-3 pl-4">
-                      <a
+                      {/* <a
                         href="https://pool.aegisum.com"
                         target="_blank"
                         rel="noreferrer"
@@ -402,8 +402,8 @@ export function MainNav() {
                       >
                         <Pickaxe className="h-4 w-4" />
                         <span>Mining Pool</span>
-                      </a>
-                      <Link
+                      </a> */}
+                      {/* <Link
                         href="https://aegisum.com/news"
                         target="_blank"
                         className="flex items-center space-x-3 text-gray-300 hover:text-white text-base"
@@ -411,7 +411,7 @@ export function MainNav() {
                       >
                         <Newspaper className="h-4 w-4" />
                         <span>News</span>
-                      </Link>
+                      </Link> */}
                     </div>
                   </div>
 
@@ -423,7 +423,7 @@ export function MainNav() {
                     </h3>
                     <div className="flex space-x-4 pl-4">
                       <a
-                        href="https://discord.gg/4E5caDKkeP"
+                        href="https://discord.gg/4TfdDpgkbN"
                         target="_blank"
                         rel="noreferrer"
                         className="text-gray-300 hover:text-white text-base"
@@ -432,13 +432,31 @@ export function MainNav() {
                         Discord
                       </a>
                       <a
-                        href="https://x.com/aegisum"
+                        href="https://x.com/AdventureCoinAD"
                         target="_blank"
                         rel="noreferrer"
                         className="text-gray-300 hover:text-white text-base"
                         onClick={toggleMobileMenu}
                       >
                         Twitter
+                      </a>
+                      <a
+                        href="https://www.reddit.com/r/AdventureCoin"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-gray-300 hover:text-white text-base"
+                        onClick={toggleMobileMenu}
+                      >
+                        Reddit
+                      </a>
+                      <a
+                        href="https://www.twitch.tv/discordvickers"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-gray-300 hover:text-white text-base"
+                        onClick={toggleMobileMenu}
+                      >
+                        Twitch
                       </a>
                     </div>
                   </div>

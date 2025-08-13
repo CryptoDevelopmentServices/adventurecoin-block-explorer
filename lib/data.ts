@@ -58,7 +58,7 @@ export async function getNetworkStats() {
       supply: coinStats.supply || 0,
       txes: coinStats.txes || 0,
       connections: coinStats.connections || 0,
-      nethash: (latestNetworkHistory?.nethash || 0) / 1000, // Convert MH/s to GH/s
+      nethash: (latestNetworkHistory?.nethash || 0) / 1000, 
       difficulty_pow: latestNetworkHistory?.difficulty_pow || 0,
       difficulty_pos: latestNetworkHistory?.difficulty_pos || 0,
     }
@@ -493,7 +493,7 @@ export async function getMempoolTransactions() {
             vin,
             vout,
             total: totalValue, // Total in satoshis
-            value: totalValue / 100000000, // Total in AEGS
+            value: totalValue / 180000000, // Total in ADVC
           })
         } else {
           // If we can't get raw transaction, add basic info
@@ -537,7 +537,7 @@ export async function getMempoolTransactions() {
   }
 }
 
-// Update the getMiningStats function to use the correct Aegisum parameters
+// Update the getMiningStats function to use the correct AdventureCoin parameters
 export async function getMiningStats() {
   const { db } = await connectToDatabase()
 
@@ -550,7 +550,7 @@ export async function getMiningStats() {
 
   // Try to get mining info from RPC
   let difficulty = latestNetworkHistory?.difficulty_pow || 0
-  let networkhashps = (latestNetworkHistory?.nethash || 0) / 1000 // Convert MH/s to GH/s
+  let networkhashps = (latestNetworkHistory?.nethash || 0) / 1000 
 
   try {
     // Get mining info from RPC
@@ -561,8 +561,8 @@ export async function getMiningStats() {
       // Get network hashrate from RPC (120 blocks average)
       const hashps = await rpcCall("getnetworkhashps", [120, -1])
       if (hashps) {
-        // Convert to GH/s (RPC returns H/s)
-        networkhashps = hashps / 1000000000
+        // Convert to KH/s (RPC returns H/s)
+        networkhashps = hashps / 1000
       }
     }
   } catch (error) {
@@ -570,11 +570,11 @@ export async function getMiningStats() {
     // Continue with database values if RPC fails
   }
 
-  // Aegisum halving parameters
-  const blockReward = 500 // Initial block reward is 500 AEGS
-  const halvingInterval = 100000 // Blocks between halvings (every 100k blocks)
+  // AdventureCoin halving parameters
+  const blockReward = 300 // Initial block reward is 300 ADVC
+  const halvingInterval = 300000 // Blocks between halvings (every 300k blocks)
   const blockTime = 180 // Target block time in seconds (3 minutes)
-  const maxSupply = 100000000 // 100 million AEGS max supply
+  const maxSupply = 180000000 // 180 million ADVC max supply
 
   // Calculate current halving cycle
   const currentHalvingCycle = Math.floor(currentBlock / halvingInterval)
@@ -592,218 +592,98 @@ export async function getMiningStats() {
     {
       halving: 0,
       height: 0,
-      reward: 500,
+      reward: 300,
       supply: 0,
-      date: "Mar 2025",
+      date: "Apr 2025",
       status: currentHalvingCycle === 0 ? "active" : "past",
     },
     {
       halving: 1,
-      height: 100000,
-      reward: 250,
-      supply: 50000000,
-      date: "Oct 2025",
-      status: currentHalvingCycle === 1 ? "active" : currentBlock >= 100000 ? "past" : "future",
+      height: 300000,
+      reward: 150,
+      supply: 135000000,
+      date: "Jan 2027",
+      status: currentHalvingCycle === 1 ? "active" : currentBlock >= 300000 ? "past" : "future",
     },
     {
       halving: 2,
-      height: 200000,
-      reward: 125,
-      supply: 75000000,
-      date: "May 2026",
-      status: currentHalvingCycle === 2 ? "active" : currentBlock >= 200000 ? "past" : "future",
+      height: 600000,
+      reward: 75,
+      supply: 157500000,
+      date: "Oct 2028",
+      status: currentHalvingCycle === 2 ? "active" : currentBlock >= 600000 ? "past" : "future",
     },
     {
       halving: 3,
-      height: 300000,
-      reward: 62.5,
-      supply: 87500000,
-      date: "Dec 2026",
-      status: currentHalvingCycle === 3 ? "active" : currentBlock >= 300000 ? "past" : "future",
+      height: 900000,
+      reward: 37.5,
+      supply: 168750000,
+      date: "Jun 2030",
+      status: currentHalvingCycle === 3 ? "active" : currentBlock >= 900000 ? "past" : "future",
     },
     {
       halving: 4,
-      height: 400000,
-      reward: 31.25,
-      supply: 93750000,
-      date: "Jul 2027",
-      status: currentHalvingCycle === 4 ? "active" : currentBlock >= 400000 ? "past" : "future",
+      height: 1200000,
+      reward: 18.75,
+      supply: 174375000,
+      date: "Mar 2032",
+      status: currentHalvingCycle === 4 ? "active" : currentBlock >= 1200000 ? "past" : "future",
     },
     {
       halving: 5,
-      height: 500000,
-      reward: 15.625,
-      supply: 96875000,
-      date: "Feb 2028",
-      status: currentHalvingCycle === 5 ? "active" : currentBlock >= 500000 ? "past" : "future",
+      height: 1500000,
+      reward: 9.375,
+      supply: 177187500,
+      date: "Nov 2033",
+      status: currentHalvingCycle === 5 ? "active" : currentBlock >= 1500000 ? "past" : "future",
     },
     {
       halving: 6,
-      height: 600000,
-      reward: 7.8125,
-      supply: 98437500,
-      date: "Sep 2028",
-      status: currentHalvingCycle === 6 ? "active" : currentBlock >= 600000 ? "past" : "future",
+      height: 1800000,
+      reward: 4.6875,
+      supply: 178593750,
+      date: "Aug 2035",
+      status: currentHalvingCycle === 6 ? "active" : currentBlock >= 1800000 ? "past" : "future",
     },
     {
       halving: 7,
-      height: 700000,
-      reward: 3.90625,
-      supply: 99218750,
-      date: "Apr 2029",
-      status: currentHalvingCycle === 7 ? "active" : currentBlock >= 700000 ? "past" : "future",
+      height: 2100000,
+      reward: 2.34375,
+      supply: 179296875,
+      date: "Apr 2037",
+      status: currentHalvingCycle === 7 ? "active" : currentBlock >= 2100000 ? "past" : "future",
     },
     {
       halving: 8,
-      height: 800000,
-      reward: 1.953125,
-      supply: 99609375,
-      date: "Nov 2029",
-      status: currentHalvingCycle === 8 ? "active" : currentBlock >= 800000 ? "past" : "future",
+      height: 2400000,
+      reward: 1.171875,
+      supply: 179296875,
+      date: "Jan 2039",
+      status: currentHalvingCycle === 8 ? "active" : currentBlock >= 2400000 ? "past" : "future",
     },
     {
       halving: 9,
-      height: 900000,
-      reward: 0.9765625,
-      supply: 99804688,
-      date: "Jun 2030",
-      status: currentHalvingCycle === 9 ? "active" : currentBlock >= 900000 ? "past" : "future",
+      height: 2700000,
+      reward: 0.5859375,
+      supply: 179912109,
+      date: "Oct 2040",
+      status: currentHalvingCycle === 9 ? "active" : currentBlock >= 2700000 ? "past" : "future",
     },
     {
       halving: 10,
-      height: 1000000,
-      reward: 0.48828125,
-      supply: 99902344,
-      date: "Jan 2031",
-      status: currentHalvingCycle === 10 ? "active" : currentBlock >= 1000000 ? "past" : "future",
-    },
-    {
-      halving: 11,
-      height: 1100000,
-      reward: 0.244140625,
-      supply: 99951172,
-      date: "Aug 2031",
-      status: currentHalvingCycle === 11 ? "active" : currentBlock >= 1100000 ? "past" : "future",
-    },
-    {
-      halving: 12,
-      height: 1200000,
-      reward: 0.1220703125,
-      supply: 99975586,
-      date: "Mar 2032",
-      status: currentHalvingCycle === 12 ? "active" : currentBlock >= 1200000 ? "past" : "future",
-    },
-    {
-      halving: 13,
-      height: 1300000,
-      reward: 0.0610351563,
-      supply: 99987793,
-      date: "Oct 2032",
-      status: currentHalvingCycle === 13 ? "active" : currentBlock >= 1300000 ? "past" : "future",
-    },
-    {
-      halving: 14,
-      height: 1400000,
-      reward: 0.0305175781,
-      supply: 99993896,
-      date: "May 2033",
-      status: currentHalvingCycle === 14 ? "active" : currentBlock >= 1400000 ? "past" : "future",
-    },
-    {
-      halving: 15,
-      height: 1500000,
-      reward: 0.0152587891,
-      supply: 99996948,
-      date: "Dec 2033",
-      status: currentHalvingCycle === 15 ? "active" : currentBlock >= 1500000 ? "past" : "future",
-    },
-    {
-      halving: 16,
-      height: 1600000,
-      reward: 0.0076293945,
-      supply: 99998474,
-      date: "Jul 2034",
-      status: currentHalvingCycle === 16 ? "active" : currentBlock >= 1600000 ? "past" : "future",
-    },
-    {
-      halving: 17,
-      height: 1700000,
-      reward: 0.0038146973,
-      supply: 99999237,
-      date: "Feb 2035",
-      status: currentHalvingCycle === 17 ? "active" : currentBlock >= 1700000 ? "past" : "future",
-    },
-    {
-      halving: 18,
-      height: 1800000,
-      reward: 0.0019073486,
-      supply: 99999619,
-      date: "Sep 2035",
-      status: currentHalvingCycle === 18 ? "active" : currentBlock >= 1800000 ? "past" : "future",
-    },
-    {
-      halving: 19,
-      height: 1900000,
-      reward: 0.0009536743,
-      supply: 99999809,
-      date: "Apr 2036",
-      status: currentHalvingCycle === 19 ? "active" : currentBlock >= 1900000 ? "past" : "future",
-    },
-    {
-      halving: 20,
-      height: 2000000,
-      reward: 0.0004768372,
-      supply: 99999905,
-      date: "Nov 2036",
-      status: currentHalvingCycle === 20 ? "active" : currentBlock >= 2000000 ? "past" : "future",
-    },
-    {
-      halving: 21,
-      height: 2100000,
-      reward: 0.0002384186,
-      supply: 99999952,
-      date: "Jun 2037",
-      status: currentHalvingCycle === 21 ? "active" : currentBlock >= 2100000 ? "past" : "future",
-    },
-    {
-      halving: 22,
-      height: 2200000,
-      reward: 0.0001192093,
-      supply: 99999976,
-      date: "Jan 2038",
-      status: currentHalvingCycle === 22 ? "active" : currentBlock >= 2200000 ? "past" : "future",
-    },
-    {
-      halving: 23,
-      height: 2300000,
-      reward: 0.0000596046,
-      supply: 99999988,
-      date: "Aug 2038",
-      status: currentHalvingCycle === 23 ? "active" : currentBlock >= 2300000 ? "past" : "future",
-    },
-    {
-      halving: 24,
-      height: 2400000,
-      reward: 0.0000298023,
-      supply: 99999994,
-      date: "Mar 2039",
-      status: currentHalvingCycle === 24 ? "active" : currentBlock >= 2400000 ? "past" : "future",
-    },
-    {
-      halving: 25,
-      height: 2500000,
-      reward: 0.0000149012,
-      supply: 99999997,
-      date: "Oct 2039",
-      status: currentHalvingCycle === 25 ? "active" : currentBlock >= 2500000 ? "past" : "future",
+      height: 3000000,
+      reward: 0.29296875,
+      supply: 179912109,
+      date: "May 2042",
+      status: currentHalvingCycle === 10 ? "active" : currentBlock >= 3000000 ? "past" : "future",
     },
   ]
 
   // Get block hashes for special blocks
   const specialBlocks = [
-    { height: 1, reward: 1000000, description: "Relaunch distribution" },
-    { height: 2, reward: 1000000, description: "Relaunch distribution" },
-    { height: 3, reward: 600000, description: "Relaunch distribution" },
+    { height: 1, reward: 0, description: "Relaunch distribution" },
+    { height: 2, reward: 0, description: "Relaunch distribution" },
+    { height: 3, reward: 0, description: "Relaunch distribution" },
   ]
 
   // Try to get the block hashes for the special blocks

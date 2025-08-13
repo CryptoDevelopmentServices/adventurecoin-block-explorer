@@ -17,8 +17,8 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    // Max supply is always 100 million AEGS
-    const maxSupply = 100000000
+    // Max supply is always 180 million ADVC
+    const maxSupply = 180000000
 
     return new NextResponse(maxSupply.toString(), {
       status: 200,
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error("Error in max-supply API route:", error)
 
-    return new NextResponse("100000000", {
+    return new NextResponse("180000000", {
       status: 500,
       headers: {
         "Content-Type": "text/plain",

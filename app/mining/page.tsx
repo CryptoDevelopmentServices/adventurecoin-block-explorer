@@ -24,20 +24,20 @@ export default async function MiningPage() {
       blocks: 0,
       difficulty: 0,
       networkhashps: 0,
-      currentReward: 500,
-      nextHalvingHeight: 100000,
-      blocksUntilHalving: 100000,
+      currentReward: 300,
+      nextHalvingHeight: 300000,
+      blocksUntilHalving: 300000,
       daysUntilHalving: 0,
       halvingSchedule: [],
-      maxSupply: 100000000,
+      maxSupply: 180000000,
       currentSupply: 0,
       blockTime: 180,
       retargetInterval: 3,
-      specialBlocks: [
-        { height: 1, reward: 1000000, description: "Relaunch distribution" },
-        { height: 2, reward: 1000000, description: "Relaunch distribution" },
-        { height: 3, reward: 600000, description: "Relaunch distribution" },
-      ],
+      // specialBlocks: [
+      //   { height: 1, reward: 1000000, description: "Relaunch distribution" },
+      //   { height: 2, reward: 1000000, description: "Relaunch distribution" },
+      //   { height: 3, reward: 600000, description: "Relaunch distribution" },
+      // ],
     }
     difficultyHistory = []
   }
@@ -49,7 +49,7 @@ export default async function MiningPage() {
     <main className="container mx-auto px-4 py-6 max-w-7xl">
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">Mining Statistics</h1>
-        <p className="text-muted-foreground">Aegisum network mining information and statistics</p>
+        <p className="text-muted-foreground">AdventureCoin network mining information and statistics</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -77,7 +77,7 @@ export default async function MiningPage() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold">{miningStats.currentReward} AEGS</h3>
+              <h3 className="text-2xl font-bold">{miningStats.currentReward} ADVC</h3>
               <p className="text-xs text-muted-foreground">Current mining reward</p>
             </div>
           </CardContent>
@@ -92,7 +92,7 @@ export default async function MiningPage() {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold">{Number(miningStats.networkhashps?.toFixed(4)) || "0.0000"} GH/s</h3>
+              <h3 className="text-2xl font-bold">{Number(miningStats.networkhashps?.toFixed(4)) || "0.0000"} KH/s</h3>
               <p className="text-xs text-muted-foreground">Estimated network hashrate</p>
             </div>
           </CardContent>
@@ -127,7 +127,7 @@ export default async function MiningPage() {
       <Card className="mb-8">
         <CardHeader>
           <CardTitle>Network Statistics</CardTitle>
-          <CardDescription>Current Aegisum network performance metrics</CardDescription>
+          <CardDescription>Current AdventureCoin network performance metrics</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -137,7 +137,7 @@ export default async function MiningPage() {
             </div>
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-1">Algorithm</h3>
-              <p className="text-xl font-semibold">Scrypt (PoW)</p>
+              <p className="text-xl font-semibold">YesPowerADVC (PoW - CPU Only)</p>
             </div>
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-1">Block Time</h3>
@@ -149,11 +149,11 @@ export default async function MiningPage() {
             </div>
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-1">Max Supply</h3>
-              <p className="text-xl font-semibold">{formatNumber(miningStats.maxSupply)} AEGS</p>
+              <p className="text-xl font-semibold">{formatNumber(miningStats.maxSupply)} ADVC</p>
             </div>
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-1">Current Supply</h3>
-              <p className="text-xl font-semibold">{formatNumber(miningStats.currentSupply)} AEGS</p>
+              <p className="text-xl font-semibold">{formatNumber(miningStats.currentSupply)} ADVC</p>
             </div>
           </div>
         </CardContent>
@@ -163,7 +163,7 @@ export default async function MiningPage() {
       <Card className="mb-8">
         <CardHeader>
           <CardTitle>Block Reward Schedule</CardTitle>
-          <CardDescription>Aegisum halving schedule</CardDescription>
+          <CardDescription>AdventureCoin halving schedule</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -188,9 +188,9 @@ export default async function MiningPage() {
                         {typeof halving.reward === "number" && halving.reward < 0.01
                           ? halving.reward.toFixed(8)
                           : halving.reward}{" "}
-                        AEGS
+                        ADVC
                       </TableCell>
-                      <TableCell>{formatNumber(halving.supply)} AEGS</TableCell>
+                      <TableCell>{formatNumber(halving.supply)} ADVC</TableCell>
                     </TableRow>
                   ))}
                 {(!miningStats.halvingSchedule || miningStats.halvingSchedule.length === 0) && (
@@ -211,39 +211,39 @@ export default async function MiningPage() {
         <Card>
           <CardHeader>
             <CardTitle>Supply Information</CardTitle>
-            <CardDescription>Aegisum coin supply statistics</CardDescription>
+            <CardDescription>AdventureCoin coin supply statistics</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div>
                 <div className="flex justify-between mb-1">
                   <span className="text-sm font-medium">Current Supply</span>
-                  <span className="text-sm">{formatNumber(miningStats.currentSupply)} AEGS</span>
+                  <span className="text-sm">{formatNumber(miningStats.currentSupply)} ADVC</span>
                 </div>
                 <div className="w-full bg-muted rounded-full h-2.5">
                   <div className="bg-primary h-2.5 rounded-full" style={{ width: `${percentMined}%` }}></div>
                 </div>
                 <div className="flex justify-between mt-1 text-xs text-muted-foreground">
                   <span>{percentMined.toFixed(2)}%</span>
-                  <span>Max Supply: {formatNumber(miningStats.maxSupply)} AEGS</span>
+                  <span>Max Supply: {formatNumber(miningStats.maxSupply)} ADVC</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 pt-2">
                 <div>
                   <h4 className="text-sm font-medium text-muted-foreground mb-1">Initial Block Reward</h4>
-                  <p className="text-lg font-semibold">500 AEGS</p>
+                  <p className="text-lg font-semibold">300 ADVC</p>
                 </div>
                 <div>
                   <h4 className="text-sm font-medium text-muted-foreground mb-1">Halving Interval</h4>
-                  <p className="text-lg font-semibold">100,000 blocks</p>
+                  <p className="text-lg font-semibold">300,000 blocks</p>
                 </div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card>
+        {/* <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Gift className="mr-2 h-5 w-5 text-amber-500" />
@@ -348,7 +348,7 @@ export default async function MiningPage() {
               </TableBody>
             </Table>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </main>
   )

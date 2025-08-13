@@ -16,7 +16,7 @@ export default async function TransactionsPage({ searchParams }) {
     <main className="container mx-auto px-4 py-6 max-w-7xl">
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">Transactions</h1>
-        <p className="text-muted-foreground">Recent transactions on the Aegisum blockchain</p>
+        <p className="text-muted-foreground">Recent transactions on the AdventureCoin blockchain</p>
       </div>
 
       <Card>
@@ -25,7 +25,7 @@ export default async function TransactionsPage({ searchParams }) {
             <List className="mr-2 h-5 w-5" />
             Latest Transactions
           </CardTitle>
-          <CardDescription>Most recent transactions in the Aegisum blockchain</CardDescription>
+          <CardDescription>Most recent transactions in the AdventureCoin blockchain</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -68,7 +68,7 @@ export default async function TransactionsPage({ searchParams }) {
                         <AddressTag address={tx.vout[0]?.addresses || ""} />
                       </div>
                     </TableCell>
-                    <TableCell className="text-right">{formatNumber(tx.total / 100000000)} AEGS</TableCell>
+                    <TableCell className="text-right">{formatNumber(tx.total / 180000000)} ADVC</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

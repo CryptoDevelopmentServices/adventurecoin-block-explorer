@@ -31,14 +31,14 @@ export default async function NetworkPage() {
     <main className="container mx-auto px-4 py-6 max-w-7xl">
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">Network Information</h1>
-        <p className="text-muted-foreground">Aegisum network nodes and connection information</p>
+        <p className="text-muted-foreground">AdventureCoin network nodes and connection information</p>
       </div>
 
       {/* Connection Nodes */}
       <Card className="mb-8">
         <CardHeader>
           <CardTitle>Official Connection Nodes</CardTitle>
-          <CardDescription>Connect to these nodes in your Aegisum wallet</CardDescription>
+          <CardDescription>Connect to these nodes in your AdventureCoin wallet</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -50,7 +50,7 @@ export default async function NetworkPage() {
                     <h3 className="text-lg font-semibold">Primary Node</h3>
                     <div className="flex items-center mt-1">
                       <Server className="h-4 w-4 text-primary mr-2" />
-                      <p className="font-medium">node.aegisum.com</p>
+                      <p className="font-medium">seed.adventurecoin.quest</p>
                     </div>
                   </div>
                   <Badge
@@ -63,7 +63,7 @@ export default async function NetworkPage() {
                 <div className="mt-4">
                   <p className="text-sm text-muted-foreground mb-2">Add to your wallet configuration:</p>
                   <div className="bg-muted p-2 rounded-md font-mono text-xs overflow-x-auto">
-                    addnode=node.aegisum.com
+                    addnode=seed.adventurecoin.quest
                   </div>
                 </div>
               </CardContent>
@@ -77,7 +77,7 @@ export default async function NetworkPage() {
                     <h3 className="text-lg font-semibold">Backup Node 1</h3>
                     <div className="flex items-center mt-1">
                       <Server className="h-4 w-4 text-primary mr-2" />
-                      <p className="font-medium">node1.aegisum.com</p>
+                      <p className="font-medium">157.180.76.198</p>
                     </div>
                   </div>
                   <Badge variant="outline" className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
@@ -87,7 +87,7 @@ export default async function NetworkPage() {
                 <div className="mt-4">
                   <p className="text-sm text-muted-foreground mb-2">Add to your wallet configuration:</p>
                   <div className="bg-muted p-2 rounded-md font-mono text-xs overflow-x-auto">
-                    addnode=node1.aegisum.com
+                    addnode=157.180.76.198
                   </div>
                 </div>
               </CardContent>
@@ -101,7 +101,7 @@ export default async function NetworkPage() {
                     <h3 className="text-lg font-semibold">Backup Node 2</h3>
                     <div className="flex items-center mt-1">
                       <Server className="h-4 w-4 text-primary mr-2" />
-                      <p className="font-medium">node2.aegisum.com</p>
+                      <p className="font-medium">34.124.247.1</p>
                     </div>
                   </div>
                   <Badge variant="outline" className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
@@ -111,7 +111,7 @@ export default async function NetworkPage() {
                 <div className="mt-4">
                   <p className="text-sm text-muted-foreground mb-2">Add to your wallet configuration:</p>
                   <div className="bg-muted p-2 rounded-md font-mono text-xs overflow-x-auto">
-                    addnode=node2.aegisum.com
+                    addnode=34.124.247.1
                   </div>
                 </div>
               </CardContent>
@@ -157,17 +157,17 @@ export default async function NetworkPage() {
 
             <div className="flex flex-col justify-center items-center space-y-3 h-full">
               <Button variant="outline" className="flex items-center w-full md:w-auto" asChild>
-                <Link href="https://github.com/Aegisum/aegisum-core/releases" target="_blank" rel="noopener noreferrer">
-                  Download Aegisum Core
+                <Link href="https://github.com/AdventureCoin-ADVC/AdventureCoin/releases" target="_blank" rel="noopener noreferrer">
+                  Download AdventureCoin Core
                   <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="outline" className="flex items-center w-full md:w-auto" asChild>
+              {/* <Button variant="outline" className="flex items-center w-full md:w-auto" asChild>
                 <Link href="/mining.pdf" target="_blank" rel="noopener noreferrer">
                   Mining Guide PDF
                   <ArrowUpRight className="ml-2 h-4 w-4" />
                 </Link>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </CardContent>
@@ -205,7 +205,7 @@ export default async function NetworkPage() {
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-2xl font-bold">70024</h3>
+                  <h3 className="text-2xl font-bold">70015</h3>
                   <p className="text-xs text-muted-foreground">Current protocol version</p>
                 </div>
               </CardContent>

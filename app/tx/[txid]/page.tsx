@@ -69,7 +69,7 @@ export default async function TransactionPage({ params }) {
               </div>
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground mb-1">Total Value</h3>
-                <p>{formatNumber(tx.total / 100000000)} AEGS</p>
+                <p>{formatNumber(tx.total / 180000000)} ADVC</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -138,7 +138,7 @@ export default async function TransactionPage({ params }) {
                           </div>
                         )}
                       </TableCell>
-                      <TableCell className="text-right">{formatNumber(input.amount / 100000000)} AEGS</TableCell>
+                      <TableCell className="text-right">{formatNumber(input.amount / 180000000)} ADVC</TableCell>
                     </TableRow>
                   ))
                 ) : (
@@ -184,7 +184,7 @@ export default async function TransactionPage({ params }) {
                           <AddressTag address={output.addresses} />
                         </div>
                       </TableCell>
-                      <TableCell className="text-right">{formatNumber(output.amount / 100000000)} AEGS</TableCell>
+                      <TableCell className="text-right">{formatNumber(output.amount / 180000000)} ADVC</TableCell>
                     </TableRow>
                   ))
                 ) : (

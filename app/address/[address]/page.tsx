@@ -99,7 +99,7 @@ export default async function AddressPage({ params, searchParams }) {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold">{formatNumber(addressInfo.balance / 100000000)} AEGS</h3>
+              <h3 className="text-2xl font-bold">{formatNumber(addressInfo.balance / 180000000)} ADVC</h3>
               <p className="text-xs text-muted-foreground">Current balance</p>
             </div>
           </CardContent>
@@ -114,7 +114,7 @@ export default async function AddressPage({ params, searchParams }) {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold">{formatNumber(addressInfo.received / 100000000)} AEGS</h3>
+              <h3 className="text-2xl font-bold">{formatNumber(addressInfo.received / 180000000)} ADVC</h3>
               <p className="text-xs text-muted-foreground">Total received</p>
             </div>
           </CardContent>
@@ -129,7 +129,7 @@ export default async function AddressPage({ params, searchParams }) {
               </div>
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-bold">{formatNumber(addressInfo.sent / 100000000)} AEGS</h3>
+              <h3 className="text-2xl font-bold">{formatNumber(addressInfo.sent / 180000000)} ADVC</h3>
               <p className="text-xs text-muted-foreground">Total sent</p>
             </div>
           </CardContent>
@@ -188,16 +188,16 @@ export default async function AddressPage({ params, searchParams }) {
                   <TableCell className="text-right">
                     {tx.type === "sent" ? (
                       <span className="text-red-600 dark:text-red-400">
-                        -{formatNumber(tx.displayAmount / 100000000)} AEGS
+                        -{formatNumber(tx.displayAmount / 180000000)} ADVC
                       </span>
                     ) : tx.type === "self" ? (
                       <span className={tx.netAmount >= 0 ? "" : "text-red-600 dark:text-red-400"}>
                         {tx.netAmount >= 0 ? "+" : ""}
-                        {formatNumber(Math.abs(tx.netAmount) / 100000000)} AEGS
+                        {formatNumber(Math.abs(tx.netAmount) / 180000000)} ADVC
                       </span>
                     ) : (
                       <span className="text-green-600 dark:text-green-400">
-                        +{formatNumber(tx.displayAmount / 100000000)} AEGS
+                        +{formatNumber(tx.displayAmount / 180000000)} ADVC
                       </span>
                     )}
                   </TableCell>

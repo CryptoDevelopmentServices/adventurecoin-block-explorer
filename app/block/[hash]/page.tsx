@@ -190,7 +190,7 @@ export default async function BlockPage({ params }) {
                       <AddressTag address={tx.vout[0].addresses} />
                     </div>
                   </TableCell>
-                  <TableCell className="text-right">{formatNumber(tx.total / 100000000)} AEGS</TableCell>
+                  <TableCell className="text-right">{formatNumber(tx.total / 180000000)} ADVC</TableCell>
                 </TableRow>
               ))}
             </TableBody>

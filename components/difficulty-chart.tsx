@@ -27,7 +27,7 @@ export function DifficultyChart({ data }: DifficultyChartProps) {
     formattedTimestamp: formatTimestamp(item.timestamp),
   }))
 
-  // Define chart colors based on Aegisum logo
+  // Define chart colors based on AdventureCoin logo
   const chartConfig = {
     difficulty: {
       label: "Difficulty",

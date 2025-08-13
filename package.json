@@ -1,5 +1,5 @@
 {
-  "name": "aegisum-explorer",
+  "name": "adventurecoin-explorer",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -46,6 +46,7 @@
     "cmdk": "1.0.4",
     "crypto": "latest",
     "date-fns": "4.1.0",
+    "dotenv": "^17.2.1",
     "embla-carousel-react": "8.5.1",
     "gcp-metadata": "latest",
     "input-otp": "1.4.1",
@@ -59,6 +60,7 @@
     "react-day-picker": "8.10.1",
     "react-dom": "^19",
     "react-hook-form": "^7.54.1",
+    "react-is": "^19.1.1",
     "react-resizable-panels": "^2.1.7",
     "recharts": "latest",
     "snappy": "latest",

@@ -1,21 +1,26 @@
 /**
- * Aegisum Blockchain Sync Script
+ * AdventureCoin Blockchain Sync Script
  *
- * This script connects to the Aegisum daemon via RPC and syncs blockchain data to MongoDB.
+ * This script connects to the AdventureCoin daemon via RPC and syncs blockchain data to MongoDB.
  * It should be run as a background process to keep the explorer database up-to-date.
  */
 
 const { MongoClient } = require("mongodb")
 const axios = require("axios")
 const crypto = require("crypto")
+require('dotenv').config()
+
 
 // Configuration
 const RPC_HOST = process.env.RPC_HOST || "localhost"
-const RPC_PORT = process.env.RPC_PORT || 39940
+const RPC_PORT = process.env.RPC_PORT || 9982
 const RPC_USER = process.env.RPC_USER || "rpcuser"
 const RPC_PASS = process.env.RPC_PASS || "rpcpassword"
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/explorerdb"
+const MONGODB_URI = process.env.MONGODB_URI || `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/?retryWrites=true&w=majority`
 const MONGODB_DB = process.env.MONGODB_DB || "explorerdb"
+const DB_USER = process.env.DB_USER || "explorer"
+const DB_PASSWORD = process.env.DB_PASSWORD || "password"
+const DB_HOST = process.env.DB_HOST || "yourmongodbhost"
 const SYNC_INTERVAL = process.env.SYNC_INTERVAL || 60000 // 1 minute
 const MEMPOOL_SYNC_INTERVAL = 30000 // 30 seconds
 
@@ -79,7 +84,7 @@ async function createIndexes() {
   }
 }
 
-// Make RPC call to Aegisum daemon
+// Make RPC call to AdventureCoin daemon
 async function rpcCall(method, params = []) {
   try {
     const response = await axios.post(rpcUrl, {
@@ -148,20 +153,20 @@ async function getNetworkHashPS(blocks = 120, height = -1) {
 // Calculate the total coin supply based on blockchain data
 async function calculateTotalSupply(blockHeight) {
   try {
-    // Aegisum parameters
-    const initialReward = 500 // Regular block reward
-    const halvingInterval = 100000 // Blocks between halvings
+    // AdventureCoin parameters
+    const initialReward = 300 // Regular block reward
+    const halvingInterval = 300000 // Blocks between halvings
 
     // Special block rewards
     let specialBlocksSupply = 0
-    if (blockHeight >= 1) specialBlocksSupply += 1000000 // Block 1: 1 million AEGS
-    if (blockHeight >= 2) specialBlocksSupply += 1000000 // Block 2: 1 million AEGS
-    if (blockHeight >= 3) specialBlocksSupply += 600000 // Block 3: 600,000 AEGS
+    if (blockHeight >= 1) specialBlocksSupply += 0 // Block 1: 
+    if (blockHeight >= 2) specialBlocksSupply += 0 // Block 2: 
+    if (blockHeight >= 3) specialBlocksSupply += 0 // Block 3: 
 
     // Calculate regular blocks supply (starting from block 4)
     let regularBlocksSupply = 0
-    if (blockHeight >= 4) {
-      const regularBlocks = blockHeight - 3 // Exclude special blocks
+    if (blockHeight >= 0) {
+      const regularBlocks = blockHeight - 0 // Exclude special blocks
 
       // Calculate supply with halvings
       let remainingBlocks = regularBlocks
@@ -188,7 +193,7 @@ async function calculateTotalSupply(blockHeight) {
     // Total supply is the sum of special blocks and regular blocks
     const totalSupply = specialBlocksSupply + regularBlocksSupply
 
-    console.log(`Calculated supply at block ${blockHeight}: ${totalSupply} AEGS`)
+    console.log(`Calculated supply at block ${blockHeight}: ${totalSupply} ADVC`)
     return totalSupply
   } catch (error) {
     console.error("Error calculating total supply:", error)
@@ -225,7 +230,7 @@ async function processTransaction(tx, blockHeight, blockHash, blockTime) {
       total: 0,
       tx_type: null,
       op_return: null,
-      algo: "scrypt", // Aegisum uses scrypt
+      algo: "yespoweradvc", // AdventureCoin uses yespoweradvc
     }
 
     // Process inputs
@@ -380,7 +385,7 @@ async function updateNetworkStats(blockHeight) {
 
     // Update coin stats
     await db.collection("coinstats").updateOne(
-      { coin: "Aegisum" },
+      { coin: "AdventureCoin" },
       {
         $set: {
           count: blockHeight,
@@ -398,7 +403,7 @@ async function updateNetworkStats(blockHeight) {
 
     // Update network history
     const difficulty = miningInfo.difficulty
-    const nethash = networkHashPS / 1000000 // Convert to MH/s
+    const nethash = networkHashPS / 1000 // Convert to MH/s
 
     await db.collection("networkhistories").updateOne(
       { blockindex: blockHeight },
@@ -406,7 +411,7 @@ async function updateNetworkStats(blockHeight) {
         $set: {
           nethash: nethash,
           difficulty_pow: difficulty,
-          difficulty_pos: 0, // Aegisum is PoW only
+          difficulty_pos: 0, // AdventureCoin is PoW only
           timestamp: latestBlock.time,
           __v: 0,
         },
@@ -416,7 +421,7 @@ async function updateNetworkStats(blockHeight) {
 
     // Update rich list
     await db.collection("richlists").updateOne(
-      { coin: "Aegisum" },
+      { coin: "AdventureCoin" },
       {
         $set: {
           richlist_last_updated: Math.floor(Date.now() / 1000),
@@ -524,12 +529,12 @@ async function syncMempool() {
 async function initializeDatabase() {
   try {
     // Check if coinstats exists
-    const coinStats = await db.collection("coinstats").findOne({ coin: "Aegisum" })
+    const coinStats = await db.collection("coinstats").findOne({ coin: "AdventureCoin" })
 
     if (!coinStats) {
       // Create initial coin stats
       await db.collection("coinstats").insertOne({
-        coin: "Aegisum",
+        coin: "AdventureCoin",
         count: 0,
         last: 0,
         supply: 0,
@@ -553,11 +558,11 @@ async function initializeDatabase() {
     }
 
     // Create rich list document if it doesn't exist
-    const richList = await db.collection("richlists").findOne({ coin: "Aegisum" })
+    const richList = await db.collection("richlists").findOne({ coin: "AdventureCoin" })
 
     if (!richList) {
       await db.collection("richlists").insertOne({
-        coin: "Aegisum",
+        coin: "AdventureCoin",
         received: [],
         balance: [],
       })
@@ -618,7 +623,7 @@ async function syncBlockchain() {
     const currentHeight = blockchainInfo.blocks
 
     // Get last synced height from database
-    const coinStats = await db.collection("coinstats").findOne({ coin: "Aegisum" })
+    const coinStats = await db.collection("coinstats").findOne({ coin: "AdventureCoin" })
     const lastSyncedHeight = coinStats ? coinStats.count : 0
 
     console.log(`Current blockchain height: ${currentHeight}, Last synced height: ${lastSyncedHeight}`)
